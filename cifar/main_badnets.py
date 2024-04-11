@@ -210,6 +210,8 @@ def main():
             test_stats = evaluate_badnets(val_loader, data_loader_val_poisoned, model, 0)
             print(f"Test Clean Accuracy(TCA): {test_stats['clean_acc']:.4f}")
             print(f"Attack Success Rate(ASR): {test_stats['asr']:.4f}")
+            val_loss, val_prec1, val_prec5 = validate(
+                val_loader, model, criterion, epoch)
         # remember best prec
         is_best = val_prec1 > best_prec1
         if is_best:
